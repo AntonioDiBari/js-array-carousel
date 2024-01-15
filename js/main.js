@@ -15,12 +15,17 @@ for (let i = 0; i < slides.length; i++) {
 }
 slidesContainerEl.innerHTML = slidesHtml;
 
-// PREMERE FRECCIA SU (AVANTI)
-arrowUpEl.addEventListener("click", function () {
+// PREMERE FRECCIA GIU' (AVANTI)
+arrowDownEl.addEventListener("click", function () {
   // RIMUOVO CLASSE ACTIVE
   const allSlides = document.getElementsByClassName("slide");
   const oldSlide = allSlides[slideIndex];
   oldSlide.classList.remove("active");
+  // RIMUOVO CLASSE ACTIVE THUMBNAIL
+  const thumbnailActive = document.getElementsByClassName("box-thumbnail");
+  const oldThumbnailActive = thumbnailActive[slideIndex];
+  oldThumbnailActive.classList.remove("active-thumbnail");
+
   // INCREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
   if (slideIndex >= slides.length - 1) {
     slideIndex = 0;
@@ -30,14 +35,21 @@ arrowUpEl.addEventListener("click", function () {
   // RIASSEGNO CLASSE ACTIVE
   const newSlide = allSlides[slideIndex];
   newSlide.classList.add("active");
+  // RIASSEGNO CLASSE ACTIVE THUMBNAIL
+  const newThumbnailActive = thumbnailActive[slideIndex];
+  newThumbnailActive.classList.add("active-thumbnail");
 });
 
-// PREMERE FRECCIA GIU' (INDIETRO)
-arrowDownEl.addEventListener("click", function () {
+// PREMERE FRECCIA SU (INDIETRO)
+arrowUpEl.addEventListener("click", function () {
   // RIMUOVO CLASSE ACTIVE
   allSlides = document.getElementsByClassName("slide");
   const oldSlide = allSlides[slideIndex];
   oldSlide.classList.remove("active");
+  // RIMUOVO CLASSE ACTIVE THUMBNAIL
+  const thumbnailActive = document.getElementsByClassName("box-thumbnail");
+  const oldThumbnailActive = thumbnailActive[slideIndex];
+  oldThumbnailActive.classList.remove("active-thumbnail");
   // INCREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
   if (slideIndex <= 0) {
     slideIndex = slides.length - 1;
@@ -47,4 +59,7 @@ arrowDownEl.addEventListener("click", function () {
   // RIASSEGNO CLASSE ACTIVE
   const newSlide = allSlides[slideIndex];
   newSlide.classList.add("active");
+  // RIASSEGNO CLASSE ACTIVE THUMBNAIL
+  const newThumbnailActive = thumbnailActive[slideIndex];
+  newThumbnailActive.classList.add("active-thumbnail");
 });
