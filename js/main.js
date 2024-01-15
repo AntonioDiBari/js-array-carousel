@@ -18,7 +18,8 @@ slidesContainerEl.innerHTML = slidesHtml;
 // PREMERE FRECCIA SU (AVANTI)
 arrowUpEl.addEventListener("click", function () {
   // RIMUOVO CLASSE ACTIVE
-  const oldSlide = document.querySelector(".slide.active");
+  const allSlides = document.getElementsByClassName("slide");
+  const oldSlide = allSlides[slideIndex];
   oldSlide.classList.remove("active");
   // INCREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
   if (slideIndex >= slides.length - 1) {
@@ -27,15 +28,15 @@ arrowUpEl.addEventListener("click", function () {
     slideIndex++;
   }
   // RIASSEGNO CLASSE ACTIVE
-  allSlides = document.getElementsByClassName("slide");
-  const newSlides = allSlides[slideIndex];
-  newSlides.classList.add("active");
+  const newSlide = allSlides[slideIndex];
+  newSlide.classList.add("active");
 });
 
 // PREMERE FRECCIA GIU' (INDIETRO)
 arrowDownEl.addEventListener("click", function () {
   // RIMUOVO CLASSE ACTIVE
-  const oldSlide = document.querySelector(".slide.active");
+  allSlides = document.getElementsByClassName("slide");
+  const oldSlide = allSlides[slideIndex];
   oldSlide.classList.remove("active");
   // INCREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
   if (slideIndex <= 0) {
@@ -44,7 +45,6 @@ arrowDownEl.addEventListener("click", function () {
     slideIndex--;
   }
   // RIASSEGNO CLASSE ACTIVE
-  allSlides = document.getElementsByClassName("slide");
-  const newSlides = allSlides[slideIndex];
-  newSlides.classList.add("active");
+  const newSlide = allSlides[slideIndex];
+  newSlide.classList.add("active");
 });
