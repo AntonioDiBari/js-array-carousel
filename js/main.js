@@ -1,41 +1,12 @@
-// PRENDO GLI ELEMENTI CHE MI SERVIRANNO DAL DOM
+const slides = ["01.webp", "02.webp", "03.webp", "04.webp", "05.webp"];
+const slidesContainerEl = document.getElementById("slides-container");
 
-const userNumberResult = document.getElementById("numero-utente");
-
-const resultBtn = document.getElementById("result-btn");
-
-const computerNumberResult = document.getElementById("numero-pc");
-
-const finalResult = document.getElementById("result");
-
-// ASSEGNO I NUMERI RANDOM A DUE COSTANTI
-
-const userNumber = Math.floor(Math.random() * 6 + 1);
-console.log("numero Utente " + userNumber);
-
-const computerNumber = Math.floor(Math.random() * 6 + 1);
-console.log("numero Computer " + computerNumber);
-
-// RENDO NOTO ALL'UTENTE DEL SUON NUMERO
-userNumberResult.innerText = `Il dado lanciato per te ha dato il numero: ${userNumber}`;
-
-// ASCOLTO L'EVENTO DEL BTN
-resultBtn.addEventListener("click", function () {
-  computerNumberResult.innerText = `Il dado lanciato per il computer ha dato il numero: ${computerNumber}`;
-  let result = "";
-  let colorResult = "text-black";
-  //   CONDIZIONE PER CONTROLLARE LA GIOCATA
-  if (userNumber > computerNumber) {
-    result = "HAI VINTO!!";
-    colorResult = "text-success";
-  } else if (userNumber == computerNumber) {
-    result = "PAREGGIO :/";
-  } else {
-    result = "HAI PERSO :(";
-    colorResult = "text-danger";
-  }
-
-  //  STAMPO IL RISULTATO
-  finalResult.classList.add(colorResult);
-  finalResult.innerText = result;
-});
+let slidesHtml = "";
+for (let i = 0; i < slides.length; i++) {
+  const slide = slides[i];
+  let activeClass = i == 0 ? "active" : "";
+  slidesHtml += `<img src="./img/${slide}" alt="slide-${i}" class="slide ${activeClass}" />`;
+  console.log(slidesHtml);
+}
+slidesContainerEl.innerHTML = slidesHtml;
+console.log(slidesContainerEl);
