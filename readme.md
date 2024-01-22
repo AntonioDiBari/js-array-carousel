@@ -1,4 +1,4 @@
-# GIOCO DI DADI
+# CAROSELLO
 
 ## TRACCIA
 
@@ -32,3 +32,17 @@ Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di 
 - Similmente ad un indice, vado all'EL della collection successiva (o precedente) e ci applico la classe active
 - Se l'active è sull'ultima slide e premo 'avanti' assegno active alla prima, creando un giro infinito
 - Se l'active è sulla prima slide e premo 'dietro' assegno active all' ultima, creando un giro infinito
+
+## CAROSELLA DAY2
+
+**Milestone 0:**
+Se non è stato completato dalla scorsa volta, c'è un'altra occasione per farlo funzionare :muscolo::carnagione-3:
+Al click delle frecce, dovrà essere mostrata l'immagine precedente o quella successiva
+**Milestone 1:**
+aggiungere funzionalità sul carosello in modo che ogni 3 secondi lo slider scorra all'immagine successiva. Se non è stato già fatto, abilitare slider infinito (quando arrivo alla fine, ricomincio da capo, sia con l'interval che con i pulsanti).
+**Milestone 2:**
+Aggiungere il ciclo infinito del carosello (se non è stato fatto). Ovvero se è attiva la prima immagine e l'utente clicca la freccia per andare all'immagine precedente, dovrà comparire l'ultima immagine dell'array e viceversa.
+**Bonus 1:**
+Creare una funzione goToSlide(n) in grado di gestire il cambio di slide. Utilizzarla sul click delle frecce e nell'interval.
+**Bonus 2:**
+Lo scorrimento automatico delle immagini si blocca quando l'utente mette il mouse sopra il carosello e riparte quando il mouse esce fuori.

@@ -7,7 +7,7 @@ const arrowDownEl = document.querySelector(".arrow-down");
 let slideIndex = 0;
 let slidesHtml = "";
 
-// CICLO PER CREAZIONE CIMG CON TAMPLATE LITERAL
+// CICLO PER CREAZIONE CON CON TEMPLATE LITERAL
 for (let i = 0; i < slides.length; i++) {
   const slide = slides[i];
   let activeClass = i == slideIndex ? "active" : "";
@@ -15,16 +15,24 @@ for (let i = 0; i < slides.length; i++) {
 }
 slidesContainerEl.innerHTML = slidesHtml;
 
-// PREMERE FRECCIA GIU' (AVANTI)
+const clock = setInterval(function () {}, 3000);
+
+// slidesContainerEl.addEventListener("mouseover", function () {
+//   clearInterval(clock);
+// });
+// slidesContainerEl.addEventListener("mouseout", function () {
+// });
+
+//** EVENTO PREMERE FRECCIA GIU' (AVANTI)
+
 arrowDownEl.addEventListener("click", function () {
-  // RIMUOVO CLASSE ACTIVE
+  // PRENDO HTML COLLECTION SLIDES
   const allSlides = document.getElementsByClassName("slide");
-  const oldSlide = allSlides[slideIndex];
-  oldSlide.classList.remove("active");
-  // RIMUOVO CLASSE ACTIVE THUMBNAIL
+  removeActiveSlide(allSlides, slideIndex);
+
+  // PRENDO HTML COLLECTION THUMBNAILS
   const thumbnailActive = document.getElementsByClassName("box-thumbnail");
-  const oldThumbnailActive = thumbnailActive[slideIndex];
-  oldThumbnailActive.classList.remove("active-thumbnail");
+  removeActiveThumb(thumbnailActive, slideIndex);
 
   // INCREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
   if (slideIndex >= slides.length - 1) {
@@ -32,34 +40,29 @@ arrowDownEl.addEventListener("click", function () {
   } else {
     slideIndex++;
   }
-  // RIASSEGNO CLASSE ACTIVE
-  const newSlide = allSlides[slideIndex];
-  newSlide.classList.add("active");
-  // RIASSEGNO CLASSE ACTIVE THUMBNAIL
-  const newThumbnailActive = thumbnailActive[slideIndex];
-  newThumbnailActive.classList.add("active-thumbnail");
+
+  addActiveSlide(allSlides, slideIndex);
+  addActiveThumb(thumbnailActive, slideIndex);
 });
 
-// PREMERE FRECCIA SU (INDIETRO)
+//** EVENTO PREMERE FRECCIA SU (INDIETRO)
+
 arrowUpEl.addEventListener("click", function () {
-  // RIMUOVO CLASSE ACTIVE
-  allSlides = document.getElementsByClassName("slide");
-  const oldSlide = allSlides[slideIndex];
-  oldSlide.classList.remove("active");
-  // RIMUOVO CLASSE ACTIVE THUMBNAIL
+  // PRENDO L'HTML COLLECTION
+  const allSlides = document.getElementsByClassName("slide");
+  removeActiveSlide(allSlides, slideIndex);
+
+  // PRENDO HTML COLLECTION THUMBNAILS
   const thumbnailActive = document.getElementsByClassName("box-thumbnail");
-  const oldThumbnailActive = thumbnailActive[slideIndex];
-  oldThumbnailActive.classList.remove("active-thumbnail");
-  // INCREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
+  removeActiveThumb(thumbnailActive, slideIndex);
+
+  // DECREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
   if (slideIndex <= 0) {
     slideIndex = slides.length - 1;
   } else {
     slideIndex--;
   }
-  // RIASSEGNO CLASSE ACTIVE
-  const newSlide = allSlides[slideIndex];
-  newSlide.classList.add("active");
-  // RIASSEGNO CLASSE ACTIVE THUMBNAIL
-  const newThumbnailActive = thumbnailActive[slideIndex];
-  newThumbnailActive.classList.add("active-thumbnail");
+
+  addActiveSlide(allSlides, slideIndex);
+  addActiveThumb(thumbnailActive, slideIndex);
 });
