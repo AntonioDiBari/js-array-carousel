@@ -17,3 +17,22 @@ function addActiveThumb(thumbs, index) {
   const newThumbnailActive = thumbs[index];
   newThumbnailActive.classList.add("active-thumbnail");
 }
+
+function goToSlide(index) {
+  // PRENDO HTML COLLECTION SLIDES
+  const allSlides = document.getElementsByClassName("slide");
+  removeActiveSlide(allSlides, index);
+  // PRENDO HTML COLLECTION THUMBNAILS
+  const thumbnailActive = document.getElementsByClassName("box-thumbnail");
+  removeActiveThumb(thumbnailActive, index);
+  // INCREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
+  if (index >= slides.length - 1) {
+    index = 0;
+  } else {
+    index++;
+  }
+  console.log(index);
+  addActiveSlide(allSlides, index);
+  addActiveThumb(thumbnailActive, index);
+  return index;
+}

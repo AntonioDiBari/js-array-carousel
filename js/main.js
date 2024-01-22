@@ -15,7 +15,9 @@ for (let i = 0; i < slides.length; i++) {
 }
 slidesContainerEl.innerHTML = slidesHtml;
 
-const clock = setInterval(function () {}, 3000);
+const clock = setInterval(function () {
+  slideIndex = goToSlide(slideIndex);
+}, 3000);
 
 // slidesContainerEl.addEventListener("mouseover", function () {
 //   clearInterval(clock);
@@ -24,45 +26,24 @@ const clock = setInterval(function () {}, 3000);
 // });
 
 //** EVENTO PREMERE FRECCIA GIU' (AVANTI)
-
 arrowDownEl.addEventListener("click", function () {
-  // PRENDO HTML COLLECTION SLIDES
-  const allSlides = document.getElementsByClassName("slide");
-  removeActiveSlide(allSlides, slideIndex);
-
-  // PRENDO HTML COLLECTION THUMBNAILS
-  const thumbnailActive = document.getElementsByClassName("box-thumbnail");
-  removeActiveThumb(thumbnailActive, slideIndex);
-
-  // INCREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
-  if (slideIndex >= slides.length - 1) {
-    slideIndex = 0;
-  } else {
-    slideIndex++;
-  }
-
-  addActiveSlide(allSlides, slideIndex);
-  addActiveThumb(thumbnailActive, slideIndex);
+  slideIndex = goToSlide(slideIndex);
 });
 
 //** EVENTO PREMERE FRECCIA SU (INDIETRO)
-
 arrowUpEl.addEventListener("click", function () {
   // PRENDO L'HTML COLLECTION
   const allSlides = document.getElementsByClassName("slide");
   removeActiveSlide(allSlides, slideIndex);
-
   // PRENDO HTML COLLECTION THUMBNAILS
   const thumbnailActive = document.getElementsByClassName("box-thumbnail");
   removeActiveThumb(thumbnailActive, slideIndex);
-
   // DECREMENTO INDICE SLIDE CON CONTROLLO PER FARLO RIPARTIRE
   if (slideIndex <= 0) {
     slideIndex = slides.length - 1;
   } else {
     slideIndex--;
   }
-
   addActiveSlide(allSlides, slideIndex);
   addActiveThumb(thumbnailActive, slideIndex);
 });
