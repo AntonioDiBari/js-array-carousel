@@ -31,7 +31,6 @@ function goToSlide(index) {
   } else {
     index++;
   }
-  console.log(index);
   addActiveSlide(allSlides, index);
   addActiveThumb(thumbnailActive, index);
   return index;

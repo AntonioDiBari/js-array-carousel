@@ -15,15 +15,23 @@ for (let i = 0; i < slides.length; i++) {
 }
 slidesContainerEl.innerHTML = slidesHtml;
 
-const clock = setInterval(function () {
+let clock = setInterval(function () {
   slideIndex = goToSlide(slideIndex);
+  console.log("PARTITO");
 }, 3000);
 
-// slidesContainerEl.addEventListener("mouseover", function () {
-//   clearInterval(clock);
-// });
-// slidesContainerEl.addEventListener("mouseout", function () {
-// });
+slidesContainerEl.addEventListener("mouseover", function () {
+  clearInterval(clock);
+  console.log("BLOCK");
+});
+
+slidesContainerEl.addEventListener("mouseout", function () {
+  //SOVRASCRIVO LA VARIABILE COSì DA POTER RIATTIVARE CLOCK
+  clock = setInterval(function () {
+    slideIndex = goToSlide(slideIndex);
+    console.log("RIPRESO");
+  }, 3000);
+});
 
 //** EVENTO PREMERE FRECCIA GIU' (AVANTI)
 arrowDownEl.addEventListener("click", function () {
